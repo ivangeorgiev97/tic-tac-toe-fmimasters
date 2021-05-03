@@ -33,6 +33,8 @@ namespace Tic_tac_toe_fmimasters
                 }
             }
 
+            SizeChanged += Board_SizeChanged;
+
             StartNewGame();
         }
 
@@ -46,6 +48,18 @@ namespace Tic_tac_toe_fmimasters
             inProgress = false;
             initialized = false;
             usedCells = 0;
+        }
+
+        private void Board_SizeChanged(object sender, EventArgs e)
+        {
+            double cellWidth = Width / COLUMNS;
+            double cellHeight = Height / ROWS;
+
+            foreach (Cell cell in cells)
+            {
+                Rectangle rect = new Rectangle(cell.Col * cellWidth, cell.Row * cellHeight, cellWidth, cellHeight);
+                SetLayoutBounds(cell, rect);
+            }
         }
 
         private void Cell_CellStatusChanged(object sender, CellStatus e)

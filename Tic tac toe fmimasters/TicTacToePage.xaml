@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackLayout x:Name="instructionStack" Grid.Row="0" Grid.Column="1">
-                <Label x:Name="WhoPlays" Text="Играч 1 е на ход" />
+                <Label x:Name="WhoPlays" Text="" />
                 <Label x:Name="GameStatus" Text="" />
             </StackLayout>
             <ContentView Grid.Row="1" Grid.Column="1">

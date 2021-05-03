@@ -32,8 +32,8 @@ namespace Tic_tac_toe_fmimasters
             isPlayerTwo = false;
 
             BackgroundColor = Color.White;
-            OutlineColor = Color.Gray;
-            Padding = 3;
+            BorderColor = Color.Gray;
+            Padding = 2;
 
             whoPlays = new Label
             {
@@ -71,7 +71,42 @@ namespace Tic_tac_toe_fmimasters
 
         internal void reset()
         {
-            // Status = CellStatus.Closed;
+            Status = CellStatus.Closed;
+        }
+
+        public CellStatus Status
+        {
+            set
+            {
+                if (cellStatus != value)
+                {
+                    cellStatus = value;
+
+                    switch (cellStatus)
+                    {
+                        case CellStatus.Closed:
+                            Content = null;
+                            break;
+
+                        case CellStatus.X:
+                            Content = xImage;
+                            break;
+
+                        case CellStatus.O:
+                            Content = oImage;
+                            break;
+                    }
+
+                    if (CellStatusChanged != null)
+                        CellStatusChanged(this, cellStatus);
+                }
+            }
+
+            get
+            {
+                return cellStatus;
+            }
+
         }
 
     }
