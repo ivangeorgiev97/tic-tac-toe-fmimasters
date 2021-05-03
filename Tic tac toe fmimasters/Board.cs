@@ -29,13 +29,54 @@ namespace Tic_tac_toe_fmimasters
                     Cell cell = new Cell(row, col);
                     cells[row, col] = cell;
                     Children.Add(cell);
-                    // cell.TileStatusChanged += Cell_CellStatusChanged;
+                    cell.CellStatusChanged += Cell_CellStatusChanged;
                 }
             }
 
-            // SizeChanged += Board_SizeChanged;//Събитие което възниква при промяна на размера
+            StartNewGame();
+        }
 
-            // StartNewGame();
+        public void StartNewGame()
+        {
+            foreach (Cell cell in cells)
+            {
+                cell.reset();
+            }
+
+            inProgress = false;
+            initialized = false;
+            usedCells = 0;
+        }
+
+        private void Cell_CellStatusChanged(object sender, CellStatus e)
+        {
+
+            if (!inProgress)
+            {
+                inProgress = true;
+
+                /*
+                if (GameStarted != null)
+                {
+                    GameStarted(this, EventArgs.Empty);
+                } */
+            }
+
+            int opennedCount = 0;
+
+            /*
+            foreach (Cell cell in cells)
+            {
+                if (cell.Status == CellStatus.X || cell.Status == CellStatus.O)
+                    opennedCount++;
+            } */
+
+            // FlaggedCellsCount = flaggedCount;
+
+            Cell currentCell = (Cell)sender;
+
+            
+
         }
 
     }
