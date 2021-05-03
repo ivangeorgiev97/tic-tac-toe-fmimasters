@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tic_tac_toe_fmimasters.TicTacToePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Морски шах"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Tic_tac_toe_fmimasters"
+             x:Class="Tic_tac_toe_fmimasters.TicTacToePage"
+             Title="Морски шах">
+
+    <ContentView>
+        <Grid x:Name="uiGrid" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="instructionStack" Grid.Row="0" Grid.Column="1">
+                <Label x:Name="WhoPlays" Text="Играч 1 е на ход" />
+                <Label x:Name="GameStatus" Text="" />
+            </StackLayout>
+            <ContentView Grid.Row="1" Grid.Column="1">
+                <Grid x:Name="gameGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:Board x:Name="board" />
+                </Grid>
+            </ContentView>
+        </Grid>
+    </ContentView>
 </ContentPage>
