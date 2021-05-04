@@ -10,6 +10,7 @@ namespace Tic_tac_toe_fmimasters
         const int COLUMNS = 3;
         const int ROWS = 3;
         const int MAX_MOVES = 9;
+        public static bool IsPlayerTwo { get; set; } // false - player 1, true - player 2
 
         public event EventHandler TicTacToeStarted;
         public event EventHandler<bool> TicTacToeEnded;
@@ -24,6 +25,8 @@ namespace Tic_tac_toe_fmimasters
 
         public Board()
         {
+            IsPlayerTwo = false;
+
             for (int row = 0; row < ROWS; row++)
             {
                 for (int col = 0; col < COLUMNS; col++)

@@ -20,14 +20,12 @@ namespace Tic_tac_toe_fmimasters
         Image xImage;
         public int Row { get; set; }
         public int Col { get; set; }
-        public bool isPlayerTwo { get; set; } // false - player 1, true - player 2
 
         public event EventHandler<CellStatus> CellStatusChanged;
         public Cell(int row, int col)
         {
             Row = row;
             Col = col;
-            isPlayerTwo = false;
 
             BackgroundColor = Color.White;
             BorderColor = Color.Gray;
@@ -51,9 +49,9 @@ namespace Tic_tac_toe_fmimasters
         private void SingleTap(object sender, EventArgs e)
         {
             if (Status == CellStatus.Closed)
-                Status = isPlayerTwo ? CellStatus.O : CellStatus.X;
+                Status = Board.IsPlayerTwo ? CellStatus.O : CellStatus.X;
 
-            isPlayerTwo = !isPlayerTwo;
+            Board.IsPlayerTwo = !Board.IsPlayerTwo;
         }
 
         internal void reset()

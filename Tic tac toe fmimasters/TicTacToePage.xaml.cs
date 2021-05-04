@@ -23,6 +23,8 @@ namespace Tic_tac_toe_fmimasters
             playerOne = new Player(player1Name);
             playerTwo = new Player(player2Name);
 
+            WhoPlays.Text = player1Name + " е на ход";
+
             board.TicTacToeStarted += Board_GameStarted;
             board.TicTacToeEnded += Board_GameEnded;
 
