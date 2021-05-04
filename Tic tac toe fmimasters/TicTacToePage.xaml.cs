@@ -23,7 +23,7 @@ namespace Tic_tac_toe_fmimasters
             playerOne = new Player(player1Name);
             playerTwo = new Player(player2Name);
 
-            WhoPlays.Text = player1Name + " е на ход";
+            WhoPlays.Text = $"{player1Name} с X е на ход";
 
             board.TicTacToeStarted += Board_GameStarted;
             board.TicTacToeEnded += Board_GameEnded;
@@ -45,7 +45,7 @@ namespace Tic_tac_toe_fmimasters
 
         private void Board_IsPlayerTwoStatusChanged(object sender, EventArgs e)
         {
-
+            WhoPlays.Text = Board.IsPlayerTwo ? $"{playerTwo.Name} с O е на ход" : $"{playerOne.Name} с X е на ход";
         }
 
         private void ContentView_SizeChanged(object sender, EventArgs e)

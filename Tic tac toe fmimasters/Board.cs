@@ -91,6 +91,11 @@ namespace Tic_tac_toe_fmimasters
 
             UsedCellsCount = usedCellsCount;
 
+            if (UsedCellsCount < MAX_MOVES)
+            {
+                IsPlayerTwoStatusChanged(this, EventArgs.Empty);
+            } 
+
             Cell currentCell = (Cell)sender;
 
             if (e == CellStatus.X || e == CellStatus.O)
