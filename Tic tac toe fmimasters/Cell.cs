@@ -16,8 +16,6 @@ namespace Tic_tac_toe_fmimasters
     class Cell : Frame
     {
         CellStatus cellStatus = CellStatus.Closed;
-        Label whoPlays;
-        Label gameStatus;
         Image oImage;
         Image xImage;
         public int Row { get; set; }
@@ -35,25 +33,10 @@ namespace Tic_tac_toe_fmimasters
             BorderColor = Color.Gray;
             Padding = 2;
 
-            whoPlays = new Label
-            {
-                TextColor = Color.White,
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center
-            };
-
-            gameStatus = new Label
-            {
-                TextColor = Color.White,
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center
-            };
-
             Assembly assembly = Assembly.GetExecutingAssembly();
 
             oImage = new Image { Source = ImageSource.FromResource("Tic_tac_toe_fmimasters.images.o.png", assembly) };
             xImage = new Image { Source = ImageSource.FromResource("Tic_tac_toe_fmimasters.images.x.png", assembly) };
-
 
             TapGestureRecognizer singleTap = new TapGestureRecognizer
             {
@@ -67,6 +50,10 @@ namespace Tic_tac_toe_fmimasters
 
         private void SingleTap(object sender, EventArgs e)
         {
+            if (Status == CellStatus.Closed)
+                Status = isPlayerTwo ? CellStatus.O : CellStatus.X;
+
+            isPlayerTwo = !isPlayerTwo;
         }
 
         internal void reset()

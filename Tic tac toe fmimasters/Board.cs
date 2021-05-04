@@ -20,6 +20,8 @@ namespace Tic_tac_toe_fmimasters
         bool initialized;
         int usedCells;
 
+        public int UsedCellsCount { set; get; }
+
         public Board()
         {
             for (int row = 0; row < ROWS; row++)
@@ -69,27 +71,39 @@ namespace Tic_tac_toe_fmimasters
             {
                 inProgress = true;
 
-                /*
-                if (GameStarted != null)
+                if (TicTacToeStarted != null)
                 {
-                    GameStarted(this, EventArgs.Empty);
-                } */
+                    TicTacToeStarted(this, EventArgs.Empty);
+                }
             }
 
-            int opennedCount = 0;
+            int usedCellsCount = 0;
 
-            /*
             foreach (Cell cell in cells)
             {
-                if (cell.Status == CellStatus.X || cell.Status == CellStatus.O)
-                    opennedCount++;
-            } */
+                if (cell.Status == CellStatus.O || cell.Status == CellStatus.X)
+                    usedCellsCount++;
+            }
 
-            // FlaggedCellsCount = flaggedCount;
+            UsedCellsCount = usedCellsCount;
 
             Cell currentCell = (Cell)sender;
 
-            
+            if (e == CellStatus.X || e == CellStatus.O)
+            {
+                if (!initialized)
+                    initialized = true;
+
+                inProgress = false;
+
+                if (TicTacToeEnded != null)
+                {
+                    TicTacToeEnded(this, true);
+                }
+
+            }
+
+
 
         }
 

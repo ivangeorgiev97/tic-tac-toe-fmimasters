@@ -4,7 +4,7 @@
              x:Class="Tic_tac_toe_fmimasters.TicTacToePage"
              Title="Морски шах">
 
-    <ContentView>
+    <ContentView SizeChanged="ContentView_SizeChanged">
         <Grid x:Name="uiGrid" ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*" />
@@ -18,7 +18,7 @@
                 <Label x:Name="WhoPlays" Text="" />
                 <Label x:Name="GameStatus" Text="" />
             </StackLayout>
-            <ContentView Grid.Row="1" Grid.Column="1">
+            <ContentView Grid.Row="1" Grid.Column="1" SizeChanged="ContentViewGame_SizeChanged">
                 <Grid x:Name="gameGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
