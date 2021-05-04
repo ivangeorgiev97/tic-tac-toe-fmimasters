@@ -35,11 +35,13 @@ namespace Tic_tac_toe_fmimasters
         private void Board_GameEnded(object sender, bool e)
         {
             isInProgress = false;
+            ResetGame.IsVisible = true;
         }
 
         private void Board_GameStarted(object sender, EventArgs e)
         {
             isInProgress = true;
+            ResetGame.IsVisible = false;
         }
 
 
@@ -77,6 +79,11 @@ namespace Tic_tac_toe_fmimasters
 
         private void ContentViewGame_SizeChanged(object sender, EventArgs e)
         {
+        }
+
+        private void ResetGame_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
