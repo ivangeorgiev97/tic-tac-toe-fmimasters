@@ -14,6 +14,7 @@ namespace Tic_tac_toe_fmimasters
 
         public event EventHandler TicTacToeStarted;
         public event EventHandler<bool> TicTacToeEnded;
+        public event EventHandler IsPlayerTwoStatusChanged;
 
         Cell[,] cells = new Cell[ROWS, COLUMNS];
 
@@ -105,8 +106,6 @@ namespace Tic_tac_toe_fmimasters
                 }
 
             }
-
-
 
         }
 

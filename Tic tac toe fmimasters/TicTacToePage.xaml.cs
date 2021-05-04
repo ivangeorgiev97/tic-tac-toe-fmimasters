@@ -27,6 +27,7 @@ namespace Tic_tac_toe_fmimasters
 
             board.TicTacToeStarted += Board_GameStarted;
             board.TicTacToeEnded += Board_GameEnded;
+            board.IsPlayerTwoStatusChanged += Board_IsPlayerTwoStatusChanged;
 
             board.StartNewGame();
         }
@@ -39,6 +40,12 @@ namespace Tic_tac_toe_fmimasters
         private void Board_GameStarted(object sender, EventArgs e)
         {
             isInProgress = true;
+        }
+
+
+        private void Board_IsPlayerTwoStatusChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void ContentView_SizeChanged(object sender, EventArgs e)
