@@ -35,13 +35,11 @@ namespace Tic_tac_toe_fmimasters
         private void Board_GameEnded(object sender, bool e)
         {
             isInProgress = false;
-            ResetGame.IsVisible = true;
         }
 
         private void Board_GameStarted(object sender, EventArgs e)
         {
             isInProgress = true;
-            ResetGame.IsVisible = false;
         }
 
 
@@ -68,8 +66,8 @@ namespace Tic_tac_toe_fmimasters
             }
             else
             {
-                uiGrid.RowDefinitions[0].Height = new GridLength(2, GridUnitType.Star);
-                uiGrid.RowDefinitions[1].Height = new GridLength(6, GridUnitType.Star);
+                uiGrid.RowDefinitions[0].Height = new GridLength(3, GridUnitType.Star);
+                uiGrid.RowDefinitions[1].Height = new GridLength(7, GridUnitType.Star);
 
                 uiGrid.ColumnDefinitions[0].Width = 0;
                 uiGrid.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Star);
@@ -83,7 +81,8 @@ namespace Tic_tac_toe_fmimasters
 
         private void ResetGame_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new MainPage());
+            // board.StartNewGame();
         }
     }
 }

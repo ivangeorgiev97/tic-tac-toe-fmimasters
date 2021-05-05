@@ -51,6 +51,7 @@ namespace Tic_tac_toe_fmimasters
                 cell.reset();
             }
 
+            IsPlayerTwo = false;
             inProgress = false;
             initialized = false;
             usedCells = 0;
@@ -66,6 +67,53 @@ namespace Tic_tac_toe_fmimasters
                 Rectangle rect = new Rectangle(cell.Col * cellWidth, cell.Row * cellHeight, cellWidth, cellHeight);
                 SetLayoutBounds(cell, rect);
             }
+        }
+
+        private string WhoWins()
+        {
+            if (UsedCellsCount > 4 && UsedCellsCount <= MAX_MOVES)
+            {
+                if (CheckWinenrByStatus(CellStatus.X)) 
+                {
+                    return "one";
+                } 
+                else if (CheckWinenrByStatus(CellStatus.O))
+                {
+                    return "two";
+                }
+
+                if (UsedCellsCount == MAX_MOVES)
+                    return "draw";
+            }
+
+            return String.Empty;
+        }
+
+        private bool CheckWinenrByStatus(CellStatus cellStatus)
+        {
+            bool hasWinner = false;
+
+            // Check rows
+            bool winnerRows = (cells[0, 0].Status == cellStatus && cells[0, 1].Status == cellStatus && cells[0, 2].Status == cellStatus) ||
+                         (cells[1, 0].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[1, 2].Status == cellStatus) ||
+                         (cells[2, 0].Status == cellStatus && cells[2, 1].Status == cellStatus && cells[2, 2].Status == cellStatus);
+            if (winnerRows)
+                return true;
+
+            // Check cols
+            bool winnerCols = (cells[0, 0].Status == cellStatus && cells[1, 0].Status == cellStatus && cells[2, 0].Status == cellStatus) ||
+                         (cells[0, 1].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 1].Status == cellStatus) ||
+                         (cells[0, 2].Status == cellStatus && cells[1, 2].Status == cellStatus && cells[2, 2].Status == cellStatus);
+            if (winnerCols)
+                return true;
+
+            // Check other
+            bool winnerOther = (cells[0, 0].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 2].Status == cellStatus) ||
+                         (cells[0, 2].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 1].Status == cellStatus);
+            if (winnerOther)
+                return true;
+
+            return hasWinner;
         }
 
         private void Cell_CellStatusChanged(object sender, CellStatus e)
@@ -97,7 +145,7 @@ namespace Tic_tac_toe_fmimasters
             } 
 
             Cell currentCell = (Cell)sender;
-
+            /*
             if (e == CellStatus.X || e == CellStatus.O)
             {
                 if (!initialized)
@@ -110,7 +158,7 @@ namespace Tic_tac_toe_fmimasters
                     TicTacToeEnded(this, true);
                 }
 
-            }
+            } */
 
         }
 

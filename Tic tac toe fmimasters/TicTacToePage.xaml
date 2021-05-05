@@ -7,8 +7,8 @@
     <ContentView SizeChanged="ContentView_SizeChanged">
         <Grid x:Name="uiGrid" ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="7*" />
-                <RowDefinition Height="5*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="8*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0" />
@@ -17,7 +17,7 @@
             <StackLayout x:Name="instructionStack" Grid.Row="0" Grid.Column="1">
                 <Label x:Name="GameStatus" Text="" />
                 <Label x:Name="WhoPlays" Text="" />
-                <Button x:Name="ResetGame" Text="Рестарт" IsVisible="False" Clicked="ResetGame_Clicked" />
+                <Button x:Name="ResetGame" Text="Нова игра" Clicked="ResetGame_Clicked" />
             </StackLayout>
             <ContentView Grid.Row="1" Grid.Column="1" SizeChanged="ContentViewGame_SizeChanged">
                 <Grid x:Name="gameGrid">
