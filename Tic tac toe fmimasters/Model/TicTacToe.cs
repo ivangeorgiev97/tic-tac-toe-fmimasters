@@ -10,8 +10,8 @@ namespace Tic_tac_toe_fmimasters.Model
 
         public Player Player2 { get; set; }
 
-        public bool DrawResult { get; set; }
+        // public bool DrawResult { get; set; }
 
-        public int Moves { get; set; }
+        // public int Moves { get; set; }
     }
 }

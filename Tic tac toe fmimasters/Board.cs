@@ -11,22 +11,24 @@ namespace Tic_tac_toe_fmimasters
         const int ROWS = 3;
         const int MAX_MOVES = 9;
         public static bool IsPlayerTwo { get; set; } // false - player 1, true - player 2
+        public static bool HasWinnerOrDraw { get; set; }
 
         public event EventHandler TicTacToeStarted;
-        public event EventHandler<bool> TicTacToeEnded;
+        public event EventHandler<string> TicTacToeEnded;
         public event EventHandler IsPlayerTwoStatusChanged;
 
         Cell[,] cells = new Cell[ROWS, COLUMNS];
 
         bool inProgress;
-        bool initialized;
-        int usedCells;
+       // bool initialized;
+       // int usedCells;
 
         public int UsedCellsCount { set; get; }
 
         public Board()
         {
             IsPlayerTwo = false;
+            HasWinnerOrDraw = false; 
 
             for (int row = 0; row < ROWS; row++)
             {
@@ -53,8 +55,10 @@ namespace Tic_tac_toe_fmimasters
 
             IsPlayerTwo = false;
             inProgress = false;
-            initialized = false;
-            usedCells = 0;
+            UsedCellsCount = 0;
+            HasWinnerOrDraw = false;
+            // initialized = false;
+            // usedCells = 0;
         }
 
         private void Board_SizeChanged(object sender, EventArgs e)
@@ -109,7 +113,7 @@ namespace Tic_tac_toe_fmimasters
 
             // Check other
             bool winnerOther = (cells[0, 0].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 2].Status == cellStatus) ||
-                         (cells[0, 2].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 1].Status == cellStatus);
+                         (cells[0, 2].Status == cellStatus && cells[1, 1].Status == cellStatus && cells[2, 0].Status == cellStatus);
             if (winnerOther)
                 return true;
 
@@ -142,24 +146,17 @@ namespace Tic_tac_toe_fmimasters
             if (UsedCellsCount < MAX_MOVES)
             {
                 IsPlayerTwoStatusChanged(this, EventArgs.Empty);
-            } 
+            }
 
-            Cell currentCell = (Cell)sender;
-            /*
-            if (e == CellStatus.X || e == CellStatus.O)
+            // Cell currentCell = (Cell)sender;
+
+            string whoWins = WhoWins();
+            if (whoWins != String.Empty)
             {
-                if (!initialized)
-                    initialized = true;
+                HasWinnerOrDraw = true;
 
-                inProgress = false;
-
-                if (TicTacToeEnded != null)
-                {
-                    TicTacToeEnded(this, true);
-                }
-
-            } */
-
+                TicTacToeEnded(this, whoWins);
+            }
         }
 
     }

@@ -32,9 +32,23 @@ namespace Tic_tac_toe_fmimasters
             board.StartNewGame();
         }
 
-        private void Board_GameEnded(object sender, bool e)
+        private void Board_GameEnded(object sender, string e)
         {
+            WhoPlays.Text = String.Empty;
             isInProgress = false;
+
+            switch (e)
+            {
+                case "one":
+                    GameStatus.Text = $"{playerOne.Name} с X е Победител";
+                    break;
+                case "two":
+                    GameStatus.Text = $"{playerTwo.Name} с O е Победител";
+                    break;
+                case "draw":
+                    GameStatus.Text = "Равен резултат";
+                    break;
+            }
         }
 
         private void Board_GameStarted(object sender, EventArgs e)

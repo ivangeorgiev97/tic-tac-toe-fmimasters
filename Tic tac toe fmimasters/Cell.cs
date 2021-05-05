@@ -48,11 +48,14 @@ namespace Tic_tac_toe_fmimasters
 
         private void SingleTap(object sender, EventArgs e)
         {
-            bool tempStatus = Board.IsPlayerTwo;
-            Board.IsPlayerTwo = !Board.IsPlayerTwo;
+            if (!Board.HasWinnerOrDraw)
+            {
+                bool tempStatus = Board.IsPlayerTwo;
+                Board.IsPlayerTwo = !Board.IsPlayerTwo;
 
-            if (Status == CellStatus.Closed)
-                Status = tempStatus ? CellStatus.O : CellStatus.X;
+                if (Status == CellStatus.Closed)
+                    Status = tempStatus ? CellStatus.O : CellStatus.X;
+            }
         }
 
         internal void reset()
