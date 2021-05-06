@@ -21,7 +21,7 @@ namespace Tic_tac_toe_fmimasters
             string playerOneName = PlayerOneEntry.Text;
             string playerTwoName = PlayerTwoEntry.Text;
 
-            if (playerOneName.Equals(playerTwoName))
+            if (playerOneName != null && playerOneName != "" && playerTwoName != null && playerTwoName != "" && playerOneName.Equals(playerTwoName))
             {
                 playerOneName += " 1";
                 playerTwoName += " 2";
